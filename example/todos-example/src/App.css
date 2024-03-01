@@ -1,0 +1,75 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.todo-app {
+  font-family: sans-serif;
+}
+
+/** add todo **/
+.add-todo {
+  margin-left: 0.5rem;
+}
+
+/** todo list **/
+.todo-list {
+  margin-top: 1rem;
+  text-align: left;
+  list-style: none;
+}
+
+/** todo item **/
+.todo-item {
+  font-family: monospace;
+  cursor: pointer;
+  line-height: 1.5;
+}
+.todo-item__text--completed {
+  text-decoration: line-through;
+  color: lightgray;
+}
+
+/** visibility filters **/
+.filter {
+  padding: 0.3rem 0;
+  margin: 0 0.3rem;
+  cursor: pointer;
+}
+.filter--active {
+  border-bottom: 1px solid black;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,5 +1,5 @@
-import {DefaultAction} from "../../index";
 import ComplexAction from "../ComplexAction";
+import DefaultAction from "../DefaultAction";
 
 
 

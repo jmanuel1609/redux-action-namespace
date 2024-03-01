@@ -1,11 +1,8 @@
-import {
-    ACTION_STATES,
-    ActionObjectFunction,
-    ComplexAction,
-    createActionTypes,
-    createReducer,
-    DefaultAction, ReduxAction
-} from "../index";
+import DefaultAction from "../actions/DefaultAction";
+import ComplexAction from "../actions/ComplexAction";
+import {ACTION_STATES, ActionObjectFunction, ReduxAction} from "../types";
+import {createActionTypes, createReducer} from "../actionReducers";
+
 
 test("test createActionTypes" , () => {
     class UpdateUser extends ComplexAction {
@@ -13,7 +10,7 @@ test("test createActionTypes" , () => {
     }
    const actions:any = {
        SET_ID: new DefaultAction("id"),
-       UPDATE_USER: new ComplexAction()
+       UPDATE_USER: new UpdateUser()
    } ;
 
     const NAME_SPACE: string = "TEST_ACTIONS";
@@ -21,6 +18,7 @@ test("test createActionTypes" , () => {
     expect(Object.keys(handlers).length).toBe(4);
 
     const allHasSameNameSpace: string[] = Object.keys(handlers).filter(k => k.startsWith(NAME_SPACE));
+    expect(allHasSameNameSpace.length).toBe(4);
     expect(Object.keys(handlers)[0]).toBe(`${NAME_SPACE}:SET_ID@TYPE_SEND`);
 
 });
