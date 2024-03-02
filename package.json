@@ -1,11 +1,14 @@
 {
   "name": "redux-action-namespace",
-  "version": "1.0.17-alpha",
+  "version": "1.0.19-alpha",
   "description": "redux actions with inherited classes",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist", "src"],
+  "type": "module",
+  "files": [
+    "dist/**/*"
+  ],
   "exports": {
     ".": {
       "import": {

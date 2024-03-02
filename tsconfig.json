@@ -20,6 +20,8 @@
     "outDir": "dist", // output compiled js, d.ts, and source map to dist folder
 //    "inlineSourceMap": true,
 //    "inlineSources": true
+    "checkJs": true,
+    "declarationMap": true
   },
   "include": ["src"],
   "exclude": [
