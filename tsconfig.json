@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es2017"],
+    "target": "es2018",
+    "lib": ["es2018"],
     "sourceMap": true,
     "allowJs": true,
     "skipLibCheck": true,
@@ -15,6 +15,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "declaration": true,
+    "declarationDir": "./types",
+    "outDir": "dist", // output compiled js, d.ts, and source map to dist folder
+//    "inlineSourceMap": true,
+//    "inlineSources": true
   },
   "include": ["src"],
   "exclude": [

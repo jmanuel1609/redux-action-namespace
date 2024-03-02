@@ -1,13 +1,23 @@
 {
   "name": "redux-action-namespace",
-  "version": "1.0.13-alpha",
+  "version": "1.0.17-alpha",
   "description": "redux actions with inherited classes",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist", "src"],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/types/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/types/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
   "scripts": {
     "_clear": "rimraf dist rimraf build",
     "_tsc": "tsc",

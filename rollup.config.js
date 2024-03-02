@@ -15,19 +15,22 @@ export default [
 				file: packageJson.main,
 				format: "cjs",
 				sourcemap: true,
+				name:packageJson.name
 			},
 			{
 				file: packageJson.module,
 				format: "esm",
 				sourcemap: true
-			},
+			}
 		],
 		plugins: [
 			peerDepsExternal(),
 			resolve(),
 			commonjs(),
-			typescript({ tsconfig: "./tsconfig.json", inlineSources: true }),
-			terser(),
+			typescript({
+				tsconfig: "./tsconfig.json"
+			}),
+			terser()
 		],
 		external: ["serialize-error"],
 	},
