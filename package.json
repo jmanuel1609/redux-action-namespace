@@ -1,6 +1,6 @@
 {
   "name": "redux-action-namespace",
-  "version": "1.0.22-alpha",
+  "version": "1.0.2",
   "description": "redux actions with inherited classes",
   "main": "lib/index.cjs",
   "module": "lib/index.js",
