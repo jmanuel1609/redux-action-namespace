@@ -1,17 +1,17 @@
 import DefaultAction from "../actions/DefaultAction";
-import ComplexAction from "../actions/ComplexAction";
+import StateAction from "../actions/StateAction";
 import {ACTION_STATES, ActionObjectFunction, ReduxAction} from "../types";
 import {createActionTypes, createReducer} from "../actionReducers";
 
 
 test("test createActionTypes" , () => {
-    class UpdateUser extends ComplexAction {
+    class UpdateUser extends StateAction {
 
     }
    const actions:any = {
        SET_ID: new DefaultAction("id"),
        UPDATE_USER: new UpdateUser()
-   } ;
+    } ;
 
     const NAME_SPACE: string = "TEST_ACTIONS";
     const handlers:ActionObjectFunction = createActionTypes(actions, NAME_SPACE);
@@ -31,7 +31,7 @@ test("test createReducer" , () => {
         },
         loading:ACTION_STATES.NO_REQUEST
     }
-    class UpdateUser extends ComplexAction {
+    class UpdateUser extends StateAction {
         successRdx(state: any, action:ReduxAction): any {
             return Object.assign({}, state, {
                 loading:ACTION_STATES.SUCCESS,
@@ -47,7 +47,8 @@ test("test createReducer" , () => {
     }
     const actions:any = {
         SET_ID: new DefaultAction("id"),
-        UPDATE_USER: new UpdateUser("loading")
+        UPDATE_USER: new UpdateUser("loading"),
+        SET_ADDRESS: new DefaultAction("user.addresses[0].city.name")
     } ;
 
 
@@ -71,4 +72,8 @@ test("test createReducer" , () => {
     expect(newState.loading).toBe(ACTION_STATES.FAILED);
     expect(newState.user.name).toBe("");
     expect(newState.error.message).toBe("my message");
+
+    newState = reducer(initialState,  actions.SET_ADDRESS.call("Miami"));
+    expect(newState.user.addresses[0].city.name).toBe("Miami");
+
 });

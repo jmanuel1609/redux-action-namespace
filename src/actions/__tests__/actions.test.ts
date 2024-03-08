@@ -1,4 +1,4 @@
-import ComplexAction from "../ComplexAction";
+import StateAction from "../StateAction";
 import DefaultAction from "../DefaultAction";
 
 
@@ -24,12 +24,12 @@ test("checking  Default action object class" , () => {
 });
 
 
-test("checking  ComplexAction action object class" , () => {
-    const LOAD_USER:ComplexAction = new ComplexAction("loading");
+test("checking  StateAction action object class" , () => {
+    const LOAD_USER:StateAction = new StateAction("loading");
     expect( LOAD_USER.sendType).toBe( "TYPE_SEND");
     expect( LOAD_USER.successType).toBe( "TYPE_SUCCESS");
-    expect( LOAD_USER.name).toBe("ComplexAction:loading");
-    class LOAD_PERSON extends ComplexAction {}
+    expect( LOAD_USER.name).toBe("StateAction:loading");
+    class LOAD_PERSON extends StateAction {}
     const customCountPerson:LOAD_PERSON = new LOAD_PERSON("loading");
 
     expect(customCountPerson.name ).toBe( "LOAD_PERSON:loading");

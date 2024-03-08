@@ -1,12 +1,13 @@
 import {createError, createTypeStr, getActionName, hasAnyValue, isEmptyString} from "../helpers";
 import {ACTION_STATES, ReduxAction} from "../types";
 import ActionNameSpace from "./ActionNameSpace";
+import update from "lodash.update";
 
-class ComplexAction extends  ActionNameSpace{
+class StateAction extends  ActionNameSpace{
     static defaultProps:any = {
         handleError: true
     }
-    private _name:string = "ComplexAction";
+    private _name:string = "StateAction";
     private _sendType:string;
     private _successType:string;
     private _failedType:string;
@@ -15,7 +16,7 @@ class ComplexAction extends  ActionNameSpace{
         handleError: true
     };
     private _handleSend:boolean = true;
-    constructor(loadingPath:string= "", props:any = ComplexAction.defaultProps) {
+    constructor(loadingPath:string= "", props:any = StateAction.defaultProps) {
         super();
         this._name = getActionName(this.constructor.name,this._name, `${loadingPath}`);
         if (props) {
@@ -39,8 +40,8 @@ class ComplexAction extends  ActionNameSpace{
 
     sendRdx(state:any, action:ReduxAction):any {
         if (!isEmptyString(this._loadingPath) && this._handleSend) {
-            const obj =  Object.assign({},state, {
-                [this._loadingPath]: ACTION_STATES.SEND
+            const obj = update(state, this._loadingPath, function () {
+               return   ACTION_STATES.SEND;
             });
             return structuredClone(obj);        }
         return state;
@@ -54,8 +55,8 @@ class ComplexAction extends  ActionNameSpace{
 
     successRdx(state:any, action:ReduxAction): any{
         if (!isEmptyString(this._loadingPath)) {
-            const obj =  Object.assign({},state, {
-                [this._loadingPath]: ACTION_STATES.SUCCESS
+            const obj = update(state, this._loadingPath, function () {
+                return   ACTION_STATES.SUCCESS;
             });
             return structuredClone(obj);
         }
@@ -71,8 +72,10 @@ class ComplexAction extends  ActionNameSpace{
 
     failedRdx(state:any, action:ReduxAction):any {
         if (this._props.handleError) {
-            const obj =  Object.assign({},state, {
-                [this._loadingPath]: ACTION_STATES.FAILED,
+            const newState = update(state, this._loadingPath, function () {
+                return   ACTION_STATES.FAILED;
+            });
+            const obj =  Object.assign({}, newState, {
                 error: action.payload.error
             });
             return structuredClone(obj);
@@ -148,4 +151,4 @@ class ComplexAction extends  ActionNameSpace{
         this._handleSend = value;
     }
 }
-export default ComplexAction;
+export default StateAction;

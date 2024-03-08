@@ -1,11 +1,10 @@
 {
   "name": "redux-action-namespace",
-  "version": "1.0.21-alpha",
+  "version": "1.0.22-alpha",
   "description": "redux actions with inherited classes",
   "main": "lib/index.cjs",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
-  "type": "module",
   "files": [
     "lib",
     "dist"
@@ -50,6 +49,7 @@
   },
   "homepage": "https://github.com/jmanuel1609/redux-action-namespace#readme",
   "dependencies": {
+    "lodash.update": "^4.10.2",
     "serialize-error": "^11.0.3",
     "typescript": "^5.3.3"
   },
@@ -61,6 +61,7 @@
     "@babel/preset-env": "^7.24.0",
     "@babel/preset-typescript": "^7.23.3",
     "@types/jest": "^29.5.12",
+    "@types/lodash": "^4.14.202",
     "@types/node": "^20.11.24",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",

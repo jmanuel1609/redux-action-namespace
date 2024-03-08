@@ -1,5 +1,5 @@
 import {isValidObject} from "./helpers";
-import ComplexAction from "./actions/ComplexAction";
+import StateAction from "./actions/StateAction";
 import DefaultAction from "./actions/DefaultAction";
 import {ActionObjectFunction, ReduxAction} from "./types";
 
@@ -9,7 +9,7 @@ export function createActionTypes(actions: any, nameSpace:string):ActionObjectFu
     if (isValidObject(actions)) {
         Object.keys(actions).map((key:string) => {
             const classInstance = actions[key];
-            if (classInstance instanceof ComplexAction) {
+            if (classInstance instanceof StateAction) {
                 classInstance.initNameSpace(nameSpace,key);
                 handler[classInstance.sendType] = classInstance.sendRdx.bind(
                     classInstance
