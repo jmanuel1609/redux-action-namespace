@@ -1,29 +1,26 @@
 {
   "compilerOptions": {
-    "target": "es2018",
-    "lib": ["es2018"],
-    "sourceMap": true,
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
     "declaration": true,
-    "declarationDir": "./types",
-    "outDir": "dist", // output compiled js, d.ts, and source map to dist folder
-//    "inlineSourceMap": true,
-//    "inlineSources": true
-    "checkJs": true,
-    "declarationMap": true
+    "target": "ESNext",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "strict": true,
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "outDir": "lib",
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "rootDir": "src",
+    "emitDeclarationOnly": true,
+    "strictPropertyInitialization": false
   },
-  "include": ["src"],
+  "include": [
+    "src/**/*",
+    "lib/index.d.ts" // declaration file path
+  ],
   "exclude": [
     "**/__tests__/*",
     "**/__mocks__/*"
